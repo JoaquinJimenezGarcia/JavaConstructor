@@ -14,6 +14,7 @@ public class ConstructorJava {
         Scanner input = new Scanner(System.in);
 
         String programa, nombrePrograma;
+        int respuestaEscaner = 0;
 
         System.out.println("Inserte el nombre del programa: ");
         programa = input.next();
@@ -21,12 +22,25 @@ public class ConstructorJava {
         File fichero = new File(nombrePrograma);
 
         if (fichero.exists()){
-            System.out.println("El programa ya existe.");
+            System.out.println("El programa ya existe. Compruébalo o cambia de nombre.");
+            System.exit(0);
         }
 
         BufferedWriter bw = new BufferedWriter(new FileWriter(nombrePrograma));
 
-        bw.write("public class " + programa + "{ \n public static void main(String[] args){ \n } \n }" );
-        bw.close();
+        while(respuestaEscaner != 1 && respuestaEscaner !=2){
+            System.out.println("Vas a utilizar el escaner?");
+            System.out.println("1. Sí");
+            System.out.println("2. No");
+            respuestaEscaner = input.nextInt();
+        }
+
+        if(respuestaEscaner == 1){
+            bw.write("import java.util.Scanner; \n" + "public class " + programa + "{ \n" + "public static void main(String[] args){ \n" + "Scanner input = new Scanner(System.in); \n" + "} \n" + "}" );
+            bw.close();
+        }else if(respuestaEscaner == 2){
+            bw.write("public class " + programa + "{ \n public static void main(String[] args){ \n } \n }" );
+            bw.close();
+        }
     }
 }
