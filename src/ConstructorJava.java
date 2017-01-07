@@ -22,39 +22,39 @@ public class ConstructorJava {
         System.out.println("# All rights  reserved #");
         System.out.println("########################");
 
-        System.out.println("Inserte el nombre del programa: ");
+        System.out.println("Program's name: ");
         programa = input.next();
         nombrePrograma = programa + ".java";
         File fichero = new File(nombrePrograma);
 
         if (fichero.exists()){
-            System.out.println("El programa ya existe. Compruébalo o cambia de nombre.");
+            System.out.println("Your program already exists. Please, check it or change its name.");
         }else {
 
             BufferedWriter bw = new BufferedWriter(new FileWriter(nombrePrograma));
 
             while (respuestaEscaner != 1 && respuestaEscaner != 2) {
-                System.out.println("Vas a utilizar el escaner?");
-                System.out.println("1. Sí");
+                System.out.println("Are you using a scanner?");
+                System.out.println("1. Yes");
                 System.out.println("2. No");
                 respuestaEscaner = input.nextInt();
             }
 
             while (respuestaFunciones != 1 && respuestaFunciones != 2) {
-                System.out.println("Vas a usar funciones?");
-                System.out.println("1. Sí");
+                System.out.println("Are you using functions?");
+                System.out.println("1. Yes");
                 System.out.println("2. No");
                 respuestaFunciones = input.nextInt();
             }
 
             if(respuestaFunciones == 1){
-                System.out.println("¿Cuántas?");
+                System.out.println("How many?");
                 numeroFunciones = input.nextInt();
 
                 funciones = new String[numeroFunciones];
 
                 for (int i = 0; i < funciones.length; i++) {
-                    System.out.println("Introduzca nombre de la función: ");
+                    System.out.println("Insert the " + (i+1) +" function's name: ");
                     funciones[i] = input.next();
                 }
 
